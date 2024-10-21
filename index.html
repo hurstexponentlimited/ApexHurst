@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join GFX Forex Trading and take your trading to the next level. Choose a plan that suits you and gain access to expert guidance, market insights, and powerful trading tools.">
+    <meta name="keywords" content="Forex, Trading, Investment, GFX, Trading Plans, Market Insights">
+    <meta name="author" content="GFX Forex">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0c4d05055d.js" crossorigin="anonymous"></script>
+    <link
+      rel="icon"
+      href="images/GFX_logo.png"
+      type="image/x-icon"
+      sizes="16x16 32x32 48x48"
+    />
+    <title>GFX Forex Trading</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+ /* About Us Section */
+.about-us {
+    background-color: #f0f4f8; /* White background */
+    color: #333; /* Darker text for contrast */
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.about-us h2 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #333; /* Dark heading */
+    margin-bottom: 20px;
+    position: relative;
+    animation: fadeInDown 1s ease-out forwards;
+}
+
+.about-us p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #666; /* Slightly lighter paragraph text */
+    padding: 20px 0;
+    position: relative;
+    animation: fadeInUp 1.5s ease-out forwards;
+}
+
+.about-us .btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ff6600; /* Bright button color for attention */
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    animation: zoomIn 2s ease forwards;
+    position: relative;
+}
+
+.about-us .btn:hover {
+    background-color: #ff9933;
+    transform: scale(1.1);
+}
+
+.about-us strong{
+    color: #ff6600;
+}
+
+.container-us h2{
+    height: auto;
+    color: #00796b;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .about-us h2 {
+        font-size: 2.5rem;
+    }
+
+    .about-us p {
+        font-size: 1rem;
+    }
+
+    .about-us .btn {
+        font-size: 1rem;
+        padding: 12px 30px;
+    }
+}
+
+
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #00796b;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        span{
+            color: #ff6600;
+        }
+
+        nav {
+            display: none; /* Hide menu on mobile */
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+        }
+
+        .side-menu {
+            position: fixed;
+            left: -250px;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #00796b;
+            color: white;
+            transition: left 0.3s ease;
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1500;
+        }
+
+        .side-menu ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 50px;
+        }
+
+        .side-menu ul li {
+            margin-bottom: 20px;
+        }
+
+        .side-menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .side-menu ul li a:hover {
+            color: #00ccff;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            background-image: url('images/pexels-n-voitkevich-6120182.jpg'); /* Placeholder for background image */
+            background-size: cover;
+            background-position: center;
+            height: 618px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: black;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #00796b;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .hero p{
+            color: #ff6600;
+            font-weight: 400;
+        }
+
+        .hero button {
+            background-color: #00796b;
+            color: white;
+            padding: 9px 9px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background-color: #005f56;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto 20px;
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .container h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            margin-top: -90px;
+            color: #00796b;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .plan-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .plan {
+            background-color: white;
+            padding: 20px;
+            margin: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 200px;
+            cursor: pointer;
+        }
+
+        .plan:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .plan h3 {
+            color: #00796b;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .plan-price {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            color: #ff6600;
+            font-weight: 900;
+        }
+
+        .plan-btn {
+            background-color: #00796b;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .plan-btn:hover {
+            background-color: #005f56;
+        }
+
+        footer {
+            background-color: #00796b;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color:#ff6600;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 200px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+       /* Navigation Menu Styles */
+nav {
+    display: flex; /* Change to flex for better alignment */
+    align-items: center; /* Center items vertically */
+    justify-content: flex-end; /* Align items to the right */
+}
+
+nav ul {
+    display: flex; /* Display items in a row */
+    list-style: none; /* Remove bullet points */
+}
+
+nav ul li {
+    margin: 0 15px; /* Add spacing between menu items */
+}
+
+nav ul li a {
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 1rem; /* Font size */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+nav ul li a:hover {
+    color: #ff6600; /* Change color on hover */
+}
+
+.cta{
+    margin-top: 5px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav {
+        display: none; /* Hide nav on mobile */
+    }
+
+    .hamburger {
+        display: block; /* Show hamburger on mobile */
+    }
+
+    .container {
+        margin-top: 100px; /* Margin for mobile */
+    }
+}
+
+@media (min-width: 769px) {
+    nav {
+        display: flex; /* Show nav on laptops and larger screens */
+    }
+
+    .hamburger {
+        display: none; /* Hide hamburger on larger screens */
+    }
+}
+
+.testimonials-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    overflow: hidden; /* Ensures that animations don't overflow the container */
+}
+
+.testimonials-container h2 {
+    margin-bottom: 20px;
+    animation: slideDownTitle 1s ease-out; /* Animation applied to the title */
+    font-size: 1.6rem;
+    font-family: 'Courier New', Courier, monospace;
+    position: relative;
+    text-transform: uppercase;
+    color: #00796b;
+}
+
+.testimonial {
+    background-color: #f9f9f9;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(50px); /* Start position below */
+    animation: slideInTestimonials 1.5s ease-out forwards;
+}
+
+.testimonial:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.testimonial:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+/* Keyframe for sliding the title down */
+@keyframes slideDownTitle {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px); /* Start from above */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Keyframe for sliding in the testimonials */
+@keyframes slideInTestimonials {
+    0% {
+        opacity: 0;
+        transform: translateY(50px); /* Start from below */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+        
+    </style>
+</head>
+<body>
+
+<header>
+    <h1><span>GFX</span> Forex Trading</h1>
+    <div class="hamburger" onclick="openMenu()">&#9776;</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="plans.html">Plans</a></li>
+            <li><a href="monia.html">Testimonials</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Side Menu -->
+<div class="side-menu" id="sideMenu">
+    <span class="close-btn" onclick="closeMenu()">&times;</span>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="plans.html">Plans</a></li>
+        <li><a href="monia.html">Testimonials</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+</div>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-section">
+        <h2>Master Forex Trading with GFX</h2>
+        <p style="font-family: 'Courier New', Courier, monospace;">Start your journey to becoming a successful trader today!</p>
+        <button onclick="window.location.href='plans.html'" class="cta">Explore Plans</button>
+    </div>
+</section>
+
+
+
+ <!-- About Us Section -->
+ <section id="about-us" class="about-us">
+    <div class="container-us">
+        <h2>About Us</h2>
+        <p>Welcome to <strong>GFX</strong>, where passion meets precision in Forex trading. At GFX, we don't just trade; we empower. Our mission is to guide aspiring traders from beginners to experts by providing tailored trading strategies, real-time insights, and powerful tools that simplify the complexities of Forex trading.</p>
+        <p>With years of experience navigating the financial markets, our team of professional traders has developed a trusted methodology that ensures our clients stay ahead of market trends and make informed trading decisions. We believe in hands-on learning, giving you the edge you need to master the art of trading.</p>
+        <p>Whether you're new to Forex or looking to sharpen your skills, GFX provides comprehensive training programs, exclusive market insights, and personalized mentorship to transform your trading journey. Our goal is to see you succeed, with us by your side at every step.</p>
+        <p>Join us at GFX and be part of a growing community where success is the only direction.</p>
+    </div>
+</section>
+
+<div class="testimonials-container">
+    <h2>What Our Clients Say</h2>
+    
+    <div class="testimonial">
+        <p>"GFX Forex has completely transformed my trading journey! The comprehensive courses and support from the team have given me the confidence to make informed trades. I went from a novice to a consistent profit-maker in just a few months. Highly recommended!"</p>
+        <h4>— John D., Forex Trader</h4>
+    </div>
+    
+    <div class="testimonial">
+        <p>"The mentorship program at GFX Forex was a game changer for me. The strategies I learned helped me navigate the Forex market successfully. The community support is incredible, and I always feel motivated to improve my skills!"</p>
+        <h4>— Sarah L., Entrepreneur</h4>
+    </div>
+
+    <div class="testimonial">
+        <p>"As a former banker, I thought I knew the ins and outs of trading, but GFX Forex opened my eyes to new strategies and techniques. The courses are structured and easy to follow, and the results speak for themselves. I've never been more confident in my trades!"</p>
+        <h4>— Mike T., Retired Banker</h4>
+    </div>
+
+    <div class="testimonial">
+        <p>"I started trading with GFX Forex while in college, and it has been the best decision of my life! The education I received helped me earn extra income that pays for my tuition. The instructors are knowledgeable and always ready to help. Thank you, GFX!"</p>
+        <h4>— Emma W., College Student</h4>
+    </div>
+    
+    <div class="testimonial">
+        <p>"Thanks to GFX Forex, I’ve been able to diversify my income streams through Forex trading. The step-by-step guides and the responsive support team made it easy for me to get started. I wish I had found them sooner!"</p>
+        <h4>— Daniel P., Small Business Owner</h4>
+    </div>
+
+    <div class="testimonial">
+        <p>"Joining GFX Forex was the best investment I’ve made in myself. The content is top-notch, and the community is supportive and inspiring. I've learned so much and feel empowered to make successful trades every day!"</p>
+        <h4>— Nina R., Aspiring Trader</h4>
+    </div>
+
+    <div class="testimonial">
+        <p>"I was skeptical about Forex trading at first, but GFX Forex turned my doubts into confidence. The strategies they teach are practical and actionable. My trading skills have improved dramatically, and I can see a clear path to financial independence!"</p>
+        <h4>— Alex S., Freelance Consultant</h4>
+    </div>
+
+    <div class="testimonial">
+        <p>"GFX Forex offers unparalleled training and resources. The live sessions and feedback from experienced traders have been invaluable. I’ve not only improved my trading skills but also gained a deeper understanding of market dynamics."</p>
+        <h4>— Lara J., Digital Marketer</h4>
+    </div>
+</div>
+
+
+<div class="container">
+    <h2>Choose Your Plan</h2>
+    <hr>
+    <section class="plan-section">
+        <!-- 1-Month Plan -->
+        <div class="plan">
+            <h3>1 Month Plan</h3>
+            <div class="plan-price">₦50,000</div>
+            <button class="plan-btn" onclick="window.location.href='payment.html?amount=50,000&plan=1'">Subscribe Now</button>
+        </div>
+        
+        <!-- 3-Month Plan -->
+        <div class="plan">
+            <h3>3 Month Plan</h3>
+            <div class="plan-price">₦150,000</div>
+            <button class="plan-btn" onclick="window.location.href='payment.html?amount=150000&plan=2'">Subscribe Now</button>
+        </div>
+        
+        <!-- 6-Month Plan -->
+        <div class="plan">
+            <h3>6 Month Plan</h3>
+            <div class="plan-price">₦250,000</div>
+            <button class="plan-btn" onclick="window.location.href='payment.html?amount=250000&plan=3'">Subscribe Now</button>
+        </div>
+
+        <!-- 12-Month Plan -->
+        <div class="plan">
+            <h3>12 Month Plan</h3>
+            <div class="plan-price">₦450,000</div>
+            <button class="plan-btn" onclick="window.location.href='payment.html?amount=450000&plan=4'">Subscribe Now</button>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2024 GFX Forex. All Rights Reserved. Follow us on 
+        <a href="https://t.me/ForexGFXs" target="_blank">Telegram</a> |  
+        <a href="https://x.com/ForexGFX" target="_blank">Twitter</a>
+    </p>
+</footer>
+
+<script>
+    function openMenu() {
+        document.getElementById("sideMenu").style.left = "0";
+    }
+
+    function closeMenu() {
+        document.getElementById("sideMenu").style.left = "-250px";
+    }
+</script>
+
+</body>
+</html>
