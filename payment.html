@@ -85,7 +85,15 @@
             background-color: #1e1e1e;
         }
 
-         body.dark-mode button {
+        body.dark-mode input {
+            background-color: #1e1e1e;
+        }
+
+        .form-section.dark-mode{
+            background-color: #1e1e1e;
+        }
+
+        body.dark-mode button {
             background-color: #333;
         }
 
@@ -93,11 +101,10 @@
             color: #ddd;
         }
 
-
         .hamburger {
             display: none;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.8rem;
         }
 
         .side-menu {
@@ -261,7 +268,7 @@ nav ul li a:hover {
 
 <header>
     <h1><span>GFX</span> Forex Trading</h1>
-    <button id="darkModeToggle" style="background: none; border: none; color: white; cursor: pointer;">🌙 Dark</button>
+    <button id="darkModeToggle" style="background: none; border: none; color: white; cursor: pointer;">🌙Dark</button>
     <div class="hamburger" onclick="openMenu()">&#9776;</div>
     <nav>
         <ul>
@@ -330,9 +337,9 @@ nav ul li a:hover {
 
         // Update button text/icon
         if (document.body.classList.contains('dark-mode')) {
-            toggleButton.textContent = '☀️ Light';
+            toggleButton.textContent = '☀️Light';
         } else {
-            toggleButton.textContent = '🌙 Dark ';
+            toggleButton.textContent = '🌙Dark ';
         }
     });
 </script>
