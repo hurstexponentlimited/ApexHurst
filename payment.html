@@ -85,8 +85,19 @@
             background-color: #1e1e1e;
         }
 
+         /* General dark mode styles for inputs */
         body.dark-mode input {
-            background-color: #1e1e1e;
+          background-color: #1e1e1e;
+          color: #e0e0e0;
+          border: 1px solid #333;
+        }
+
+          /* Autofill fix */
+        body.dark-mode input:-webkit-autofill {
+          -webkit-text-fill-color: #e0e0e0 !important; /* Force text color */
+          -webkit-box-shadow: 0 0 0px 1000px #1e1e1e inset !important; /* Force background color */
+          box-shadow: 0 0 0px 1000px #1e1e1e inset !important; /* Ensure consistency */
+          border: 1px solid #333 !important; /* Match border styles */
         }
 
         .form-section.dark-mode{
