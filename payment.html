@@ -339,25 +339,47 @@ nav ul li a:hover {
 
 <script src="script.js"></script>
 
-    <script>
+  <script>
     const toggleButton = document.getElementById('darkModeToggle');
-    toggleButton.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        document.querySelector('header').classList.toggle('dark-mode');
-        document.querySelector('footer').classList.toggle('dark-mode');
-        document.querySelector('input').classList.toggle('dark-mode');
-        document.querySelector('button').classList.toggle('dark-mode');
-        document.querySelector('.container').classList.toggle('dark-mode');
-        document.querySelector('.side-menu').classList.toggle('dark-mode');
+
+    // Function to apply dark mode
+    function applyDarkMode(isDark) {
+        const elements = [
+            document.body,
+            document.querySelector('header'),
+            document.querySelector('footer'),
+            document.querySelector('input'),
+            document.querySelector('button'),
+            document.querySelector('.container'),
+            document.querySelector('.side-menu')
+        ];
+
+        elements.forEach(element => {
+            if (element) {
+                element.classList.toggle('dark-mode', isDark);
+            }
+        });
 
         // Update button text/icon
-        if (document.body.classList.contains('dark-mode')) {
-            toggleButton.textContent = '☀️Light';
-        } else {
-            toggleButton.textContent = '🌙Dark ';
-        }
+        toggleButton.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+    }
+
+    // Load saved mode from localStorage on page load
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    applyDarkMode(isDarkMode);
+
+    // Toggle dark mode on button click
+    toggleButton.addEventListener('click', () => {
+        const currentMode = document.body.classList.contains('dark-mode');
+        const newMode = !currentMode;
+
+        applyDarkMode(newMode);
+
+        // Save the mode to localStorage
+        localStorage.setItem('darkMode', newMode);
     });
-</script>
+</script> 
+
 
 </body>
 </html>
