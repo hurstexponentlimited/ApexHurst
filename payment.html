@@ -81,6 +81,11 @@
             border: 1px solid #333;
         }
 
+        .side-menu.dark-mode {
+            background-color: #1e1e1e;
+        }
+
+
         .hamburger {
             display: none;
             cursor: pointer;
@@ -311,6 +316,7 @@ nav ul li a:hover {
         document.querySelector('header').classList.toggle('dark-mode');
         document.querySelector('footer').classList.toggle('dark-mode');
         document.querySelector('.container').classList.toggle('dark-mode');
+        document.querySelector('.side-menu').classList.toggle('dark-mode');
 
         // Update button text/icon
         if (document.body.classList.contains('dark-mode')) {
