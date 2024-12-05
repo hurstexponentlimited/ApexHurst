@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GFX Forex Trading</title>
+    <title>Testimonials - GFX Forex Trading</title>
     <link
       rel="icon"
       href="images/GFX_logo.png"
@@ -11,7 +11,6 @@
       sizes="16x16 32x32 48x48"
     />
     <style>
-
         /* Your existing CSS styling */
         * {
             margin: 0;
@@ -48,6 +47,65 @@
             font-family: 'Courier New', Courier, monospace;
         }
 
+        
+          /* Dark mode styles */
+          body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        header.dark-mode {
+            background-color: #1e1e1e;
+            color: white;
+        }
+
+        footer.dark-mode {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+
+        footer.dark-mode a {
+            color: #ff9900;
+        }
+
+        .side-menu.dark-mode {
+            background-color: #1e1e1e;
+        }
+
+        .plan-section.dark-mode {
+            background-color: #1e1e1e;  
+        }
+
+        body.dark-mode .plan {
+            background-color: #1e1e1e;
+        }
+
+        body.dark-mode h2 {
+            color: #ddd;
+        }
+
+        body.dark-mode button {
+            background-color: #333;
+        }
+
+        body.dark-mode h3 {
+            color: #ddd;
+        }
+
+        body.dark-mode .container-us  { 
+            background-color: #1e1e1e;
+            
+        }
+
+        body.dark-mode .testimonial{
+            background-color: #1e1e1e;
+        }
+
+        body.dark-mode .about-us {
+            background-color: #1e1e1e;
+        }
+
+
         span{
             color: #ff6600;
         }
@@ -55,6 +113,68 @@
         nav {
             display: none; /* Hide menu on mobile */
         }
+    .testimonials-container {
+    max-width: 800px;
+    margin: 80px auto 20px; /* Add margin to avoid overlap with fixed header */
+    padding: 20px;
+    text-align: center;
+    overflow: hidden; /* Ensures that animations don't overflow the container */
+}
+
+.testimonials-container h2 {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    animation: slideDownTitle 1s ease-out; /* Animation applied to the title */
+    text-transform: uppercase;
+    color: #00796b;
+    position: relative;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.testimonial {
+    background-color: #f9f9f9;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(50px); /* Start position below */
+    animation: slideInTestimonials 1.5s ease-out forwards;
+}
+
+.testimonial:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.testimonial:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+/* Keyframe for sliding the title down */
+@keyframes slideDownTitle {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px); /* Start from above */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Keyframe for sliding in the testimonials */
+@keyframes slideInTestimonials {
+    0% {
+        opacity: 0;
+        transform: translateY(50px); /* Start from below */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
         .hamburger {
             display: none;
@@ -93,7 +213,7 @@
         }
 
         .side-menu ul li a:hover {
-            color: #00ccff;
+            color: #00796b;
         }
 
         .close-btn {
@@ -104,17 +224,7 @@
             cursor: pointer;
         }
 
-        .container {
-            max-width: 600px;
-            margin: 80px auto 20px; /* Add margin to avoid overlap with fixed header */
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
         
-
         .form-section {
             text-align: center;
         }
@@ -122,14 +232,20 @@
         .form-section h2 {
             margin-bottom: 20px;
             color: #00796b;
+            font-family: 'Courier New', Courier, monospace;
         }
 
-        .form-section input {
+        .form-section input, .form-section textarea {
             width: 90%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 5px;
+        }
+
+        .form-section textarea {
+            resize: vertical;
+            min-height: 100px;
         }
 
         .form-section button {
@@ -164,7 +280,8 @@
             text-decoration: underline;
         }
 
-                     /* Navigation Menu Styles */
+
+              /* Navigation Menu Styles */
 nav {
     display: flex; /* Change to flex for better alignment */
     align-items: center; /* Center items vertically */
@@ -191,7 +308,10 @@ nav ul li a:hover {
     color: #ff6600; /* Change color on hover */
 }
 
-       /* Responsive Styles */
+
+
+
+/* Responsive Styles */
 @media (max-width: 768px) {
     nav {
         display: none; /* Hide nav on mobile */
@@ -204,6 +324,10 @@ nav ul li a:hover {
     .container {
         margin-top: 100px; /* Margin for mobile */
     }
+
+    header h1 {
+            font-size: 1.3rem;
+        }
 }
 
 @media (min-width: 769px) {
@@ -214,135 +338,24 @@ nav ul li a:hover {
     .hamburger {
         display: none; /* Hide hamburger on larger screens */
     }
+    
 }
 
-
-        
- /* About Us Section */
-.about-us {
-    background-color: #ffffff; /* White background */
-    color: #333; /* Darker text for contrast */
-    padding: 100px 20px;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
-
-.about-us h2 {
-    font-size: 3rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #333; /* Dark heading */
-    margin-bottom: 20px;
-    position: relative;
-    animation: fadeInDown 1s ease-out forwards;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.about-us p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    max-width: 800px;
-    margin: 0 auto;
-    color: #666; /* Slightly lighter paragraph text */
-    padding: 20px 0;
-    position: relative;
-    animation: fadeInUp 1.5s ease-out forwards;
-}
-
-.about-us .btn {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 15px 40px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #fff;
-    background-color: #ff6600; /* Bright button color for attention */
-    border-radius: 50px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    animation: zoomIn 2s ease forwards;
-    position: relative;
-}
-
-.about-us .btn:hover {
-    background-color: #ff9933;
-    transform: scale(1.1);
-}
-
-.about-us strong{
-    color: #ff6600;
-}
-
-.container-us h2{
-    height: auto;
-    color: #00796b;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-@keyframes fadeInDown {
-    0% {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes zoomIn {
-    0% {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .about-us h2 {
-        font-size: 2.5rem;
-    }
-
-    .about-us p {
-        font-size: 1rem;
-    }
-
-    .about-us .btn {
-        font-size: 1rem;
-        padding: 12px 30px;
-    }
-}
     </style>
 </head>
 <body>
 
     <header>
         <h1><span>GFX</span> Forex Trading</h1>
+        <button id="darkModeToggle" style="background: none; border: none; color: white; cursor: pointer;">🌙</button>
         <div class="hamburger" onclick="openMenu()">&#9776;</div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="plans.html">Plans</a></li>
                 <li><a href="monia.html">Testimonials</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -352,39 +365,116 @@ nav ul li a:hover {
     <span class="close-btn" onclick="closeMenu()">&times;</span>
     <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="plans.html">Plans</a></li>
         <li><a href="monia.html">Testimonials</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
     </ul>
 </div>
-    
-   <!-- About Us Section -->
- <section id="about-us" class="about-us">
-    <div class="container-us">
-        <h2>About Us</h2>
-        <p>Welcome to <strong>GFX</strong>, where passion meets precision in Forex trading. At GFX, we don't just trade; we empower. Our mission is to guide aspiring traders from beginners to experts by providing tailored trading strategies, real-time insights, and powerful tools that simplify the complexities of Forex trading.</p>
-        <p>With years of experience navigating the financial markets, our team of professional traders has developed a trusted methodology that ensures our clients stay ahead of market trends and make informed trading decisions. We believe in hands-on learning, giving you the edge you need to master the art of trading.</p>
-        <p>Whether you're new to Forex or looking to sharpen your skills, GFX provides comprehensive training programs, exclusive market insights, and personalized mentorship to transform your trading journey. Our goal is to see you succeed, with us by your side at every step.</p>
-        <p>Join us at GFX and be part of a growing community where success is the only direction.</p>
-    </div>
-</section> 
 
-<footer>
-    <p>&copy; 2024 GFX Forex. All Rights Reserved. Follow us on 
-        <a href="https://t.me/ForexGFXs" target="_blank">Telegram</a> |  
-        <a href="https://x.com/ForexGFX" target="_blank">Twitter</a>
-    </p>
-</footer>
+
+    <div class="testimonials-container">
+        <h2 class="say">What our clients say</h2>
+        
+        <div class="testimonial">
+            <p>"GFX Forex has completely transformed my trading journey! The comprehensive courses and support from the team have given me the confidence to make informed trades. I went from a novice to a consistent profit-maker in just a few months. Highly recommended!"</p>
+            <h4>— John D., Forex Trader</h4>
+        </div>
+        
+        <div class="testimonial">
+            <p>"The mentorship program at GFX Forex was a game changer for me. The strategies I learned helped me navigate the Forex market successfully. The community support is incredible, and I always feel motivated to improve my skills!"</p>
+            <h4>— Sarah L., Entrepreneur</h4>
+        </div>
+    
+        <div class="testimonial">
+            <p>"As a former banker, I thought I knew the ins and outs of trading, but GFX Forex opened my eyes to new strategies and techniques. The courses are structured and easy to follow, and the results speak for themselves. I've never been more confident in my trades!"</p>
+            <h4>— Mike T., Retired Banker</h4>
+        </div>
+    
+        <div class="testimonial">
+            <p>"I started trading with GFX Forex while in college, and it has been the best decision of my life! The education I received helped me earn extra income that pays for my tuition. The instructors are knowledgeable and always ready to help. Thank you, GFX!"</p>
+            <h4>— Emma W., College Student</h4>
+        </div>
+        
+        <div class="testimonial">
+            <p>"Thanks to GFX Forex, I’ve been able to diversify my income streams through Forex trading. The step-by-step guides and the responsive support team made it easy for me to get started. I wish I had found them sooner!"</p>
+            <h4>— Daniel P., Small Business Owner</h4>
+        </div>
+    
+        <div class="testimonial">
+            <p>"Joining GFX Forex was the best investment I’ve made in myself. The content is top-notch, and the community is supportive and inspiring. I've learned so much and feel empowered to make successful trades every day!"</p>
+            <h4>— Nina R., Aspiring Trader</h4>
+        </div>
+    
+        <div class="testimonial">
+            <p>"I was skeptical about Forex trading at first, but GFX Forex turned my doubts into confidence. The strategies they teach are practical and actionable. My trading skills have improved dramatically, and I can see a clear path to financial independence!"</p>
+            <h4>— Alex S., Freelance Consultant</h4>
+        </div>
+    
+        <div class="testimonial">
+            <p>"GFX Forex offers unparalleled training and resources. The live sessions and feedback from experienced traders have been invaluable. I’ve not only improved my trading skills but also gained a deeper understanding of market dynamics."</p>
+            <h4>— Lara J., Digital Marketer</h4>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 GFX Forex. All Rights Reserved. Follow us on 
+            <a href="https://t.me/ForexGFXs" target="_blank">Telegram</a> |  
+            <a href="https://x.com/ForexGFX" target="_blank">Twitter</a>
+        </p>
+    </footer>
+
+    <script>
+        function openMenu() {
+            document.getElementById('sideMenu').style.left = '0';
+        }
+    
+        function closeMenu() {
+            document.getElementById('sideMenu').style.left = '-250px';
+        }
+    </script>
 
 <script>
-    function openMenu() {
-        document.getElementById("sideMenu").style.left = "0";
+    const toggleButton = document.getElementById('darkModeToggle');
+
+    // Function to apply dark mode
+    function applyDarkMode(isDark) {
+        const elements = [
+            document.body,
+            document.querySelector('header'),
+            document.querySelector('footer'),
+            document.querySelector('input'),
+            document.querySelector('button'),
+            document.querySelector('.container'),
+            document.querySelector('.side-menu'),
+            document.querySelector('.hero'),
+        ];
+
+        elements.forEach(element => {
+            if (element) {
+                element.classList.toggle('dark-mode', isDark);
+            }
+        });
+
+        // Update button text/icon
+        toggleButton.textContent = isDark ? '☀️' : '🌙';
     }
 
-    function closeMenu() {
-        document.getElementById("sideMenu").style.left = "-250px";
-    }
+    // Load saved mode from localStorage on page load
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    applyDarkMode(isDarkMode);
+
+    // Toggle dark mode on button click
+    toggleButton.addEventListener('click', () => {
+        const currentMode = document.body.classList.contains('dark-mode');
+        const newMode = !currentMode;
+
+        applyDarkMode(newMode);
+
+        // Save the mode to localStorage
+        localStorage.setItem('darkMode', newMode);
+    });
 </script>
+    
 </body>
 </html>
