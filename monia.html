@@ -47,6 +47,65 @@
             font-family: 'Courier New', Courier, monospace;
         }
 
+        
+          /* Dark mode styles */
+          body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        header.dark-mode {
+            background-color: #1e1e1e;
+            color: white;
+        }
+
+        footer.dark-mode {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+
+        footer.dark-mode a {
+            color: #ff9900;
+        }
+
+        .side-menu.dark-mode {
+            background-color: #1e1e1e;
+        }
+
+        .plan-section.dark-mode {
+            background-color: #1e1e1e;  
+        }
+
+        body.dark-mode .plan {
+            background-color: #1e1e1e;
+        }
+
+        body.dark-mode h2 {
+            color: #ddd;
+        }
+
+        body.dark-mode button {
+            background-color: #333;
+        }
+
+        body.dark-mode h3 {
+            color: #ddd;
+        }
+
+        body.dark-mode .container-us  { 
+            background-color: #1e1e1e;
+            
+        }
+
+        body.dark-mode .testimonial{
+            background-color: #1e1e1e;
+        }
+
+        body.dark-mode .about-us {
+            background-color: #1e1e1e;
+        }
+
+
         span{
             color: #ff6600;
         }
@@ -221,30 +280,6 @@
             text-decoration: underline;
         }
 
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            nav {
-                display: none; /* Hide nav on mobile */
-            }
-
-            .hamburger {
-                display: block; /* Show hamburger on mobile */
-            }
-
-            .container {
-                margin-top: 100px; /* Margin for mobile */
-            }
-        }
-
-        @media (min-width: 769px) {
-            nav {
-                display: flex; /* Show nav on laptops and larger screens */
-            }
-
-            .hamburger {
-                display: none; /* Hide hamburger on larger screens */
-            }
-        }
 
               /* Navigation Menu Styles */
 nav {
@@ -289,6 +324,10 @@ nav ul li a:hover {
     .container {
         margin-top: 100px; /* Margin for mobile */
     }
+
+    header h1 {
+            font-size: 1.3rem;
+        }
 }
 
 @media (min-width: 769px) {
@@ -299,6 +338,7 @@ nav ul li a:hover {
     .hamburger {
         display: none; /* Hide hamburger on larger screens */
     }
+    
 }
 
     </style>
@@ -307,14 +347,15 @@ nav ul li a:hover {
 
     <header>
         <h1><span>GFX</span> Forex Trading</h1>
+        <button id="darkModeToggle" style="background: none; border: none; color: white; cursor: pointer;">🌙</button>
         <div class="hamburger" onclick="openMenu()">&#9776;</div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="plans.html">Plans</a></li>
                 <li><a href="monia.html">Testimonials</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -324,10 +365,10 @@ nav ul li a:hover {
     <span class="close-btn" onclick="closeMenu()">&times;</span>
     <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="plans.html">Plans</a></li>
         <li><a href="monia.html">Testimonials</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
     </ul>
 </div>
 
@@ -392,6 +433,48 @@ nav ul li a:hover {
             document.getElementById('sideMenu').style.left = '-250px';
         }
     </script>
+
+<script>
+    const toggleButton = document.getElementById('darkModeToggle');
+
+    // Function to apply dark mode
+    function applyDarkMode(isDark) {
+        const elements = [
+            document.body,
+            document.querySelector('header'),
+            document.querySelector('footer'),
+            document.querySelector('input'),
+            document.querySelector('button'),
+            document.querySelector('.container'),
+            document.querySelector('.side-menu'),
+            document.querySelector('.hero'),
+        ];
+
+        elements.forEach(element => {
+            if (element) {
+                element.classList.toggle('dark-mode', isDark);
+            }
+        });
+
+        // Update button text/icon
+        toggleButton.textContent = isDark ? '☀️' : '🌙';
+    }
+
+    // Load saved mode from localStorage on page load
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    applyDarkMode(isDarkMode);
+
+    // Toggle dark mode on button click
+    toggleButton.addEventListener('click', () => {
+        const currentMode = document.body.classList.contains('dark-mode');
+        const newMode = !currentMode;
+
+        applyDarkMode(newMode);
+
+        // Save the mode to localStorage
+        localStorage.setItem('darkMode', newMode);
+    });
+</script>
     
 </body>
 </html>
