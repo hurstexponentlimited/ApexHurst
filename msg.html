@@ -67,5 +67,47 @@
     <p>Thank you for contacting us. We will get back to you shortly.</p>
     <a href="index.html" class="home-button">Return to Home</a> <!-- Replace with your homepage URL -->
 
+    <script>
+        const toggleButton = document.getElementById('darkModeToggle');
+    
+        // Function to apply dark mode
+        function applyDarkMode(isDark) {
+            const elements = [
+                document.body,
+                document.querySelector('header'),
+                document.querySelector('footer'),
+                document.querySelector('input'),
+                document.querySelector('button'),
+                document.querySelector('.container'),
+                document.querySelector('.side-menu'),
+                document.querySelector('.hero'),
+            ];
+    
+            elements.forEach(element => {
+                if (element) {
+                    element.classList.toggle('dark-mode', isDark);
+                }
+            });
+    
+            // Update button text/icon
+            toggleButton.textContent = isDark ? '☀️' : '🌙';
+        }
+    
+        // Load saved mode from localStorage on page load
+        const isDarkMode = localStorage.getItem('darkMode') === 'true';
+        applyDarkMode(isDarkMode);
+    
+        // Toggle dark mode on button click
+        toggleButton.addEventListener('click', () => {
+            const currentMode = document.body.classList.contains('dark-mode');
+            const newMode = !currentMode;
+    
+            applyDarkMode(newMode);
+    
+            // Save the mode to localStorage
+            localStorage.setItem('darkMode', newMode);
+        });
+    </script>
+
 </body>
 </html>
