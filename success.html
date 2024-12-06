@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Successful - GFX Forex Trading</title>
+    <link
+      rel="icon"
+      href="images/GFX_logo.png"
+      type="image/x-icon"
+      sizes="16x16 32x32 48x48"
+    />
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -14,6 +20,8 @@
             height: 100vh;
             background-color: #f0f4f8;
             text-align: center;
+            position: relative;
+            overflow: hidden; /* Ensures confetti stays within view */
         }
         h1 {
             color: #00796b;
@@ -53,9 +61,10 @@
             color: #ff6600;
         }
 
-        body.dark-mode .home-button {
+        body.dark-mode .home-button{
             background-color: #ff6600;
         }
+
         
     </style>
 </head>
@@ -64,6 +73,41 @@
     <h1>Payment Successful!</h1>
     <p>Thank you for your payment. Your transaction has been processed successfully.</p>
     <a href="index.html" class="home-button">Return to Home</a>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        // Confetti explosion on page load
+        function fireConfetti() {
+            const end = Date.now() + 5 * 1000; // Confetti duration: 5 seconds
+
+            const colors = ['#00c9a7', '#ffdd57', '#ff6f61', '#9c27b0', '#2196f3'];
+
+            (function frame() {
+                confetti({
+                    particleCount: 5,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: colors
+                });
+                confetti({
+                    particleCount: 5,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: colors
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            })();
+        }
+
+        // Trigger confetti on page load
+        window.onload = fireConfetti;
+    </script>
 
     <script>
         const toggleButton = document.getElementById('darkModeToggle');
