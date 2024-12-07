@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Code</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background: #1e1e1e;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .code-container {
+            background-color: #1e1e1e;
+            border-radius: 20px;
+            padding: 30px 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .code-input {
+            width: 100%;
+            padding: 12px;
+            margin: 20px 0;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            font-size: 1.1em;
+            background: rgba(255, 255, 255, 0.3);
+            color: #fff;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .code-input:focus {
+            outline: none;
+            border-color: #2575fc;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #121212;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .submit-btn:hover {
+            background-color: #1e1e1e;
+            transform: scale(1.05);
+        }
+
+        .submit-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .error, .success {
+            font-size: 1.1em;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .error {
+            color: #f44336;
+        }
+
+        .success {
+            color: #4CAF50;
+        }
+
+        .expiration {
+            font-size: 0.9em;
+            color: #fff;
+            opacity: 0.7;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="code-container">
+        <h1>Unlock Your Access</h1>
+        <input type="text" id="code-input" class="code-input" placeholder="Enter access code" />
+        <button id="submit-btn" class="submit-btn">Submit</button>
+        <div id="status"></div>
+        <p id="expiration"></p>
+    </div>
+
+    <script>
+        // Load codes from localStorage or initialize with empty object if not found
+        let codes = JSON.parse(localStorage.getItem('codes')) || {};
+
+        // Function to add a new code with expiration time (in minutes)
+        function addCode(code, expirationMinutes) {
+            const currentTime = new Date().getTime();
+            codes[code] = { 
+                expiration: currentTime + expirationMinutes * 60 * 1000, 
+                used: false 
+            };
+            saveCodes();
+        }
+
+        // Function to save codes to localStorage
+        function saveCodes() {
+            localStorage.setItem('codes', JSON.stringify(codes));
+        }
+
+        // Adding new codes manually on page load (you can modify these codes as needed)
+        document.addEventListener('DOMContentLoaded', () => {
+            addCode('MYNEWCODE123', ); // Adds 'MYNEWCODE123' with a 15-minute expiration time
+            addCode('DISCOUNT50', 10000); // Adds 'DISCOUNT50' with a 30-minute expiration time
+        });
+
+        // Function to update expiration display
+        function updateExpirationDisplay(code) {
+            const currentTime = new Date().getTime();
+            const codeData = codes[code];
+            const timeRemaining = codeData.expiration - currentTime;
+
+            if (timeRemaining > 0) {
+                const minutes = Math.floor(timeRemaining / (1000 * 60));
+                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+                document.getElementById('expiration').textContent = `Expires in: ${minutes}m ${seconds}s`;
+            } else {
+                document.getElementById('expiration').textContent = 'This code has expired.';
+            }
+        }
+
+        // Function to validate code
+        function validateCode(code) {
+            const currentTime = new Date().getTime();
+            const codeData = codes[code];
+
+            if (!codeData) {
+                return { valid: false, message: 'Invalid code' };
+            }
+
+            // Check if the code has expired or been used
+            if (currentTime > codeData.expiration) {
+                return { valid: false, message: 'This code has expired' };
+            }
+
+            // Allow reuse until expired
+            if (codeData.used) {
+                return { valid: false, message: 'This code has already been used' };
+            }
+
+            return { valid: true };
+        }
+
+        // Handling code submission
+        document.getElementById('submit-btn').addEventListener('click', function() {
+            const codeInput = document.getElementById('code-input').value.trim();
+            const statusElement = document.getElementById('status');
+            const expirationElement = document.getElementById('expiration');
+            const result = validateCode(codeInput);
+
+            if (result.valid) {
+                // Mark code as used once expired
+                const codeData = codes[codeInput];
+                if (new Date().getTime() > codeData.expiration && !codeData.used) {
+                    codeData.used = true;
+                    saveCodes(); // Save updated code status
+                }
+
+                statusElement.innerHTML = '<span class="success">Code accepted! You now have access.</span>';
+                expirationElement.textContent = '';
+
+                // Redirect to the success page (or any other page)
+                setTimeout(() => {
+                    window.location.href = 'trade5.html'; // Change to your desired URL
+                }, 2000); // Redirects after 2 seconds
+            } else {
+                statusElement.innerHTML = '<span class="error">' + result.message + '</span>';
+                if (result.message === 'This code has expired') {
+                    expirationElement.textContent = 'Code expired at: ' + new Date(codes[codeInput].expiration).toLocaleString();
+                } else {
+                    expirationElement.textContent = '';
+                }
+            }
+        });
+
+        // Update expiration every second
+        setInterval(() => {
+            const codeInput = document.getElementById('code-input').value.trim();
+            if (codes[codeInput]) {
+                updateExpirationDisplay(codeInput);
+            }
+        }, 1000); // Update every second
+
+    </script>
+
+</body>
+</html>
