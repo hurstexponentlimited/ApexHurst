@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -177,7 +176,7 @@ h1 {
     <div id="description-section" class="container">
         <h1>VIP Strategy</h1>
         <p>This is a premium strategy to better your trading skills.</p>
-        <h2>Cost: NGN 100</h2>
+        <h2>Cost: NGN 5,000</h2>
         <input type="email" id="email-input" class="email-input" placeholder="Enter your email" required />
         <button id="proceed-btn" class="btn">Proceed to Pay</button>
     </div>
@@ -191,121 +190,128 @@ h1 {
     </div>
 
     <script src="https://js.paystack.co/v1/inline.js"></script>
-    <script>
-        // Handle initial description and payment
-        const descriptionSection = document.getElementById('description-section');
-        const codeSection = document.getElementById('code-section');
-        const proceedBtn = document.getElementById('proceed-btn');
+<script>
+    // Handle initial description and payment
+    const descriptionSection = document.getElementById('description-section');
+    const codeSection = document.getElementById('code-section');
+    const proceedBtn = document.getElementById('proceed-btn');
 
-        proceedBtn.addEventListener('click', () => {
-            const emailInput = document.getElementById('email-input');
-            const email = emailInput.value.trim();
+    // Check if user has already paid
+    if (localStorage.getItem('hasPaid') === 'true') {
+        // User has paid, show code section and hide payment section
+        descriptionSection.style.display = 'none';
+        codeSection.style.display = 'block';
+    }
 
-            if (!email) {
-                alert('Please enter a valid email address.');
-                return;
-            }
+    proceedBtn.addEventListener('click', () => {
+        const emailInput = document.getElementById('email-input');
+        const email = emailInput.value.trim();
 
-            const handler = PaystackPop.setup({
-                key: 'pk_live_fff80083ff520854d86339cfccbaa47fa97e68c0', // Replace with your Paystack public key
-                email: email, // Use the email entered by the user
-                amount: 100 * 100, // Amount in Kobo
-                currency: 'NGN',
-                callback: function (response) {
-                    // Successful transaction
-                    alert('Payment successful. Transaction ref: ' + response.reference);
-                    window.location.href = '?paid=true';
-                },
-                onClose: function () {
-                    alert('Payment was not completed.');
-                },
-            });
-            handler.openIframe();
+        if (!email) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+
+        const handler = PaystackPop.setup({
+            key: 'pk_test_7c8e764ec8ab7b8b7d4b59c113550206716a16b4', // Replace with your Paystack public key
+            email: email, // Use the email entered by the user
+            amount: 5000 * 100, // Amount in Kobo
+            currency: 'NGN',
+            callback: function (response) {
+                // Successful transaction
+                alert('Payment successful. Transaction ref: ' + response.reference);
+                
+                // Store payment status in localStorage to prevent future payment prompts
+                localStorage.setItem('hasPaid', 'true');
+                
+                // Redirect to the same page to refresh the content
+                window.location.href = window.location.href;
+            },
+            onClose: function () {
+                alert('Payment was not completed.');
+            },
         });
+        handler.openIframe();
+    });
 
-        // Check if returning from payment
-        if (new URLSearchParams(window.location.search).get('paid') === 'true') {
-            descriptionSection.style.display = 'none';
-            codeSection.style.display = 'block';
-        }
+    // Code management
+    let codes = JSON.parse(localStorage.getItem('codes')) || {};
 
-        // Code management
-        let codes = JSON.parse(localStorage.getItem('codes')) || {};
+    function saveCodes() {
+        localStorage.setItem('codes', JSON.stringify(codes));
+    }
 
-        function saveCodes() {
-            localStorage.setItem('codes', JSON.stringify(codes));
-        }
+    function addCode(code, expirationMinutes) {
+        const currentTime = new Date().getTime();
+        codes[code] = {
+            expiration: currentTime + expirationMinutes * 60 * 1000,
+            used: false,
+        };
+        saveCodes();
+    }
 
-        function addCode(code, expirationMinutes) {
-            const currentTime = new Date().getTime();
-            codes[code] = {
-                expiration: currentTime + expirationMinutes * 60 * 1000,
-                used: false,
-            };
-            saveCodes();
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            addCode('2L1', 200000); // Example code
+    document.addEventListener('DOMContentLoaded', () => {
+        addCode('2L1', 200000); // Example code
             addCode('WHY?', 100000); // Example code
             addCode('GOD', 1000); // Example code
             addCode('MAN', 1000); // Example code
-        });
+    });
 
-        function validateCode(code) {
-            const currentTime = new Date().getTime();
-            const codeData = codes[code];
+    function validateCode(code) {
+        const currentTime = new Date().getTime();
+        const codeData = codes[code];
 
-            if (!codeData) {
-                return { valid: false, message: 'Invalid code' };
-            }
-
-            if (currentTime > codeData.expiration) {
-                return { valid: false, message: 'This code has expired' };
-            }
-
-            return { valid: true };
+        if (!codeData) {
+            return { valid: false, message: 'Invalid code' };
         }
 
-        function updateExpiration(code) {
-            const codeData = codes[code];
-            if (!codeData) return;
-
-            const currentTime = new Date().getTime();
-            const timeRemaining = codeData.expiration - currentTime;
-
-            if (timeRemaining > 0) {
-                const minutes = Math.floor(timeRemaining / 60000);
-                const seconds = Math.floor((timeRemaining % 60000) / 1000);
-                document.getElementById('expiration').textContent = `Expires in: ${minutes}m ${seconds}s`;
-            } else {
-                document.getElementById('expiration').textContent = 'This code has expired.';
-            }
+        if (currentTime > codeData.expiration) {
+            return { valid: false, message: 'This code has expired' };
         }
 
-        setInterval(() => {
-            const codeInput = document.getElementById('code-input').value.trim();
-            if (codes[codeInput]) {
-                updateExpiration(codeInput);
-            }
-        }, 1000);
+        return { valid: true };
+    }
 
-        const submitBtn = document.getElementById('submit-btn');
-        submitBtn.addEventListener('click', () => {
-            const codeInput = document.getElementById('code-input').value.trim();
-            const status = document.getElementById('status');
+    function updateExpiration(code) {
+        const codeData = codes[code];
+        if (!codeData) return;
 
-            const result = validateCode(codeInput);
-            if (result.valid) {
-                status.innerHTML = '<span class="success">Code accepted! Redirecting...</span>';
-                setTimeout(() => {
-                    window.location.href = 'trade5.html'; // Redirect to access page
-                }, 2000);
-            } else {
-                status.innerHTML = '<span class="error">' + result.message + '</span>';
-            }
-        });
-    </script>
+        const currentTime = new Date().getTime();
+        const timeRemaining = codeData.expiration - currentTime;
+
+        if (timeRemaining > 0) {
+            const minutes = Math.floor(timeRemaining / 60000);
+            const seconds = Math.floor((timeRemaining % 60000) / 1000);
+            document.getElementById('expiration').textContent = `Expires in: ${minutes}m ${seconds}s`;
+        } else {
+            document.getElementById('expiration').textContent = 'This code has expired.';
+        }
+    }
+
+    setInterval(() => {
+        const codeInput = document.getElementById('code-input').value.trim();
+        if (codes[codeInput]) {
+            updateExpiration(codeInput);
+        }
+    }, 1000);
+
+    const submitBtn = document.getElementById('submit-btn');
+    submitBtn.addEventListener('click', () => {
+        const codeInput = document.getElementById('code-input').value.trim();
+        const status = document.getElementById('status');
+
+        const result = validateCode(codeInput);
+        if (result.valid) {
+            status.innerHTML = '<span class="success">Code accepted! Redirecting...</span>';
+            setTimeout(() => {
+                window.location.href = 'trade5.html'; // Redirect to access page
+            }, 2000);
+        } else {
+            status.innerHTML = '<span class="error">' + result.message + '</span>';
+        }
+    });
+</script>
+
 </body>
 
 </html>
