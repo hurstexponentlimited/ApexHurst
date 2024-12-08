@@ -1,156 +1,255 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access Code</title>
+    <title>VIP Strategy Access</title>
     <style>
-        body {
-            font-family: 'Helvetica Neue', sans-serif;
-            background: #1e1e1e;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-        }
+       body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background: linear-gradient(135deg, #0f0f0f, #2e2e2e);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    background-size: cover;
+}
 
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-        }
+h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.6);
+    color: #fff;
+    animation: fadeIn 1s ease-in-out;
+}
 
-        .code-container {
-            background-color: #1e1e1e;
-            border-radius: 20px;
-            padding: 30px 40px;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            text-align: center;
-        }
+.container {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 30px;
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    animation: slideUp 0.6s ease-in-out;
+}
 
-        .code-input {
-            width: 100%;
-            padding: 12px;
-            margin: 20px 0;
-            border: 2px solid #fff;
-            border-radius: 10px;
-            font-size: 1.1em;
-            background: rgba(255, 255, 255, 0.3);
-            color: #fff;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-sizing: border-box;
-        }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-        .code-input:focus {
-            outline: none;
-            border-color: #2575fc;
-            background: rgba(255, 255, 255, 0.5);
-        }
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
-        .submit-btn {
-            width: 100%;
-            padding: 12px;
-            background-color: #121212;
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-sizing: border-box;
-        }
+.code-input {
+    width: 100%;
+    padding: 15px;
+    margin: 20px 0;
+    border: 2px solid #fff;
+    border-radius: 12px;
+    font-size: 1.2em;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    text-align: center;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
 
-        .submit-btn:hover {
-            background-color: #1e1e1e;
-            transform: scale(1.05);
-        }
+.code-input:focus {
+    outline: none;
+    border-color: #2575fc;
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 8px rgba(37, 117, 252, 0.6);
+}
 
-        .submit-btn:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
+.btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #121212;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
 
-        .error, .success {
-            font-size: 1.1em;
-            margin-top: 15px;
-            font-weight: bold;
-        }
+.btn:hover {
+    background-color: #2575fc;
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(37, 117, 252, 0.5);
+}
 
-        .error {
-            color: #f44336;
-        }
+.btn:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
 
-        .success {
-            color: #4CAF50;
-        }
+.error, .success {
+    font-size: 1.2em;
+    margin-top: 15px;
+    font-weight: bold;
+}
 
-        .expiration {
-            font-size: 0.9em;
-            color: #fff;
-            opacity: 0.7;
-            margin-top: 10px;
-        }
+.error {
+    color: #f44336;
+}
+
+.success {
+    color: #4CAF50;
+}
+
+.expiration {
+    font-size: 0.95em;
+    color: #fff;
+    opacity: 0.8;
+    margin-top: 10px;
+}
+
+.email-input {
+    width: 80%;
+    max-width: 400px;
+    padding: 12px;
+    margin: 15px 0;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 1.2em;
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.email-input:focus {
+    outline: none;
+    border-color: #2575fc;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+#proceed-btn {
+    padding: 12px 25px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.4em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#proceed-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+#proceed-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
     </style>
 </head>
 <body>
-
-    <div class="code-container">
-        <h1>Unlock Your Access</h1>
-        <input type="text" id="code-input" class="code-input" placeholder="Enter access code" />
-        <button id="submit-btn" class="submit-btn">Submit</button>
-        <div id="status"></div>
-        <p id="expiration"></p>
+    <div id="description-section" class="container">
+        <h1>VIP Strategy</h1>
+        <p>This is a premium strategy to better your trading skills.</p>
+        <h2>Cost: NGN 100</h2>
+        <input type="email" id="email-input" class="email-input" placeholder="Enter your email" required />
+        <button id="proceed-btn" class="btn">Proceed to Pay</button>
     </div>
 
-    <script>
-        // Load codes from localStorage or initialize with empty object if not found
-        let codes = JSON.parse(localStorage.getItem('codes')) || {};
+    <div id="code-section" class="container" style="display: none;">
+        <h1>Unlock Your Access</h1>
+        <input type="text" id="code-input" class="code-input" placeholder="Enter access code" />
+        <button id="submit-btn" class="btn">Submit</button>
+        <div id="status"></div>
+        <p id="expiration" class="expiration"></p>
+    </div>
 
-        // Function to add a new code with expiration time (in minutes)
-        function addCode(code, expirationMinutes) {
-            const currentTime = new Date().getTime();
-            codes[code] = { 
-                expiration: currentTime + expirationMinutes * 60 * 1000, 
-                used: false 
-            };
-            saveCodes();
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script>
+        // Handle initial description and payment
+        const descriptionSection = document.getElementById('description-section');
+        const codeSection = document.getElementById('code-section');
+        const proceedBtn = document.getElementById('proceed-btn');
+
+        proceedBtn.addEventListener('click', () => {
+            const emailInput = document.getElementById('email-input');
+            const email = emailInput.value.trim();
+
+            if (!email) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            const handler = PaystackPop.setup({
+                key: 'pk_live_fff80083ff520854d86339cfccbaa47fa97e68c0', // Replace with your Paystack public key
+                email: email, // Use the email entered by the user
+                amount: 100 * 100, // Amount in Kobo
+                currency: 'NGN',
+                callback: function (response) {
+                    // Successful transaction
+                    alert('Payment successful. Transaction ref: ' + response.reference);
+                    window.location.href = '?paid=true';
+                },
+                onClose: function () {
+                    alert('Payment was not completed.');
+                },
+            });
+            handler.openIframe();
+        });
+
+        // Check if returning from payment
+        if (new URLSearchParams(window.location.search).get('paid') === 'true') {
+            descriptionSection.style.display = 'none';
+            codeSection.style.display = 'block';
         }
 
-        // Function to save codes to localStorage
+        // Code management
+        let codes = JSON.parse(localStorage.getItem('codes')) || {};
+
         function saveCodes() {
             localStorage.setItem('codes', JSON.stringify(codes));
         }
 
-        // Adding new codes manually on page load (you can modify these codes as needed)
-        document.addEventListener('DOMContentLoaded', () => {
-            addCode('GFX123', 500); // Adds 'MYNEWCODE123' with a 15-minute expiration time
-            addCode('GFX2024', 10000); // Adds 'DISCOUNT50' with a 30-minute expiration time
-        });
-
-        // Function to update expiration display
-        function updateExpirationDisplay(code) {
+        function addCode(code, expirationMinutes) {
             const currentTime = new Date().getTime();
-            const codeData = codes[code];
-            const timeRemaining = codeData.expiration - currentTime;
-
-            if (timeRemaining > 0) {
-                const minutes = Math.floor(timeRemaining / (1000 * 60));
-                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-                document.getElementById('expiration').textContent = `Expires in: ${minutes}m ${seconds}s`;
-            } else {
-                document.getElementById('expiration').textContent = 'This code has expired.';
-            }
+            codes[code] = {
+                expiration: currentTime + expirationMinutes * 60 * 1000,
+                used: false,
+            };
+            saveCodes();
         }
 
-        // Function to validate code
+        document.addEventListener('DOMContentLoaded', () => {
+            addCode('2L1', 9); // Example code
+            addCode('WHY?', 100000); // Example code
+        });
+
         function validateCode(code) {
             const currentTime = new Date().getTime();
             const codeData = codes[code];
@@ -159,60 +258,52 @@
                 return { valid: false, message: 'Invalid code' };
             }
 
-            // Check if the code has expired or been used
             if (currentTime > codeData.expiration) {
                 return { valid: false, message: 'This code has expired' };
-            }
-
-            // Allow reuse until expired
-            if (codeData.used) {
-                return { valid: false, message: 'This code has already been used' };
             }
 
             return { valid: true };
         }
 
-        // Handling code submission
-        document.getElementById('submit-btn').addEventListener('click', function() {
-            const codeInput = document.getElementById('code-input').value.trim();
-            const statusElement = document.getElementById('status');
-            const expirationElement = document.getElementById('expiration');
-            const result = validateCode(codeInput);
+        function updateExpiration(code) {
+            const codeData = codes[code];
+            if (!codeData) return;
 
-            if (result.valid) {
-                // Mark code as used once expired
-                const codeData = codes[codeInput];
-                if (new Date().getTime() > codeData.expiration && !codeData.used) {
-                    codeData.used = true;
-                    saveCodes(); // Save updated code status
-                }
+            const currentTime = new Date().getTime();
+            const timeRemaining = codeData.expiration - currentTime;
 
-                statusElement.innerHTML = '<span class="success">Code accepted! You now have access.</span>';
-                expirationElement.textContent = '';
-
-                // Redirect to the success page (or any other page)
-                setTimeout(() => {
-                    window.location.href = 'trade5.html'; // Change to your desired URL
-                }, 2000); // Redirects after 2 seconds
+            if (timeRemaining > 0) {
+                const minutes = Math.floor(timeRemaining / 60000);
+                const seconds = Math.floor((timeRemaining % 60000) / 1000);
+                document.getElementById('expiration').textContent = `Expires in: ${minutes}m ${seconds}s`;
             } else {
-                statusElement.innerHTML = '<span class="error">' + result.message + '</span>';
-                if (result.message === 'This code has expired') {
-                    expirationElement.textContent = 'Code expired at: ' + new Date(codes[codeInput].expiration).toLocaleString();
-                } else {
-                    expirationElement.textContent = '';
-                }
+                document.getElementById('expiration').textContent = 'This code has expired.';
             }
-        });
+        }
 
-        // Update expiration every second
         setInterval(() => {
             const codeInput = document.getElementById('code-input').value.trim();
             if (codes[codeInput]) {
-                updateExpirationDisplay(codeInput);
+                updateExpiration(codeInput);
             }
-        }, 1000); // Update every second
+        }, 1000);
 
+        const submitBtn = document.getElementById('submit-btn');
+        submitBtn.addEventListener('click', () => {
+            const codeInput = document.getElementById('code-input').value.trim();
+            const status = document.getElementById('status');
+
+            const result = validateCode(codeInput);
+            if (result.valid) {
+                status.innerHTML = '<span class="success">Code accepted! Redirecting...</span>';
+                setTimeout(() => {
+                    window.location.href = 'trade5.html'; // Redirect to access page
+                }, 2000);
+            } else {
+                status.innerHTML = '<span class="error">' + result.message + '</span>';
+            }
+        });
     </script>
-
 </body>
+
 </html>
