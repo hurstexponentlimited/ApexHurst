@@ -163,11 +163,31 @@
     text-align: center;
 }
 
+/* Social Icons */
 .social-icons a {
-    font-size: 20px;
-    margin-right: 20px;
-    color: green;
-    text-decoration: none;
+  font-size: 20px;
+  margin-right: 20px;
+  color: lightgreen;
+  text-decoration: none;
+  display: inline-block; /* Needed for animation */
+  animation: initial-bounce-shake 3s ease-in-out infinite; /* Enhanced animation */
+}
+
+/* Initial Bounce and Shake Animation */
+@keyframes initial-bounce-shake {
+  0% { transform: translateY(0); } /* Start at normal position */
+  10% { transform: translateY(-15px); } /* Bounce up */
+  20% { transform: translateY(5px); } /* Slight bounce down */
+  30% { transform: translateY(-10px); } /* Bounce up slightly */
+  40% { transform: translateY(0); } /* Back to normal */
+
+  /* Start Shake with Rotation */
+  50% { transform: translateX(-8px) rotate(-5deg); }
+  60% { transform: translateX(8px) rotate(5deg); }
+  70% { transform: translateX(-6px) rotate(-3deg); }
+  80% { transform: translateX(6px) rotate(3deg); }
+  90% { transform: translateX(-4px) rotate(-2deg); }
+  100% { transform: translateX(0) rotate(0); } /* Reset to normal position */
 }
         
     </style>
