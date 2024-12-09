@@ -240,7 +240,7 @@ h1 {
             callback: (response) => {
                 alert(`Payment successful. Transaction ref: ${response.reference}`);
                 const generatedCode = generateUniqueCode();
-                const expirationTime = new Date().getTime() + 30 * 24 * 60 * 60 * 1000;
+                const expirationTime = new Date().getTime() + 5 * 60 * 1000;
 
                 const codeData = { code: generatedCode, expiration: expirationTime, used: false };
                 localStorage.setItem('generatedCodeData', JSON.stringify(codeData));
