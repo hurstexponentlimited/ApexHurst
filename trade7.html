@@ -240,7 +240,7 @@ h1 {
             callback: (response) => {
                 alert(`Payment successful. Transaction ref: ${response.reference}`);
                 const generatedCode = generateUniqueCode();
-                const expirationTime = new Date().getTime() + 5 * 60 * 1000;
+                const expirationTime = new Date().getTime() + 30 * 24 * 60 * 60 * 1000;
 
                 const codeData = { code: generatedCode, expiration: expirationTime, used: false };
                 localStorage.setItem('generatedCodeData', JSON.stringify(codeData));
@@ -311,19 +311,19 @@ h1 {
         }
 
         if (savedCodeData.used) {
-            status.innerHTML = '<span class="info">This code been used by you. redirecting...</span>';
+            status.innerHTML = '<span class="info">This code been used by you. Please wait...</span>';
             setTimeout(() => {
                 window.location.href = 'trade5.html';
-            }, 2000);
+            }, 5000);
             return;
         }
 
-        status.innerHTML = '<span class="success">Code accepted! Redirecting...</span>';
+        status.innerHTML = '<span class="success">Code accepted! Please wait...</span>';
         setTimeout(() => {
             savedCodeData.used = true;
             localStorage.setItem('generatedCodeData', JSON.stringify(savedCodeData));
             window.location.href = 'trade5.html';
-        }, 2000);
+        }, 5000);
     });
 </script>
 
