@@ -688,8 +688,6 @@ nav ul li a:hover {
 
 .discount { color: green; font-weight: bold; }
 .discounted-price { color: red; text-decoration: line-through; }
-.discount { color: green; font-weight: bold; }
-.discounted-price { color: red; text-decoration: line-through; }
 .input-container {
     display: flex;
     align-items: center;
@@ -704,22 +702,33 @@ nav ul li a:hover {
 .input-container input {
     flex: 1;
     border: none;
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
     outline: none;
+    min-width: 0; /* Prevents input from forcing button out */
 }
 
 .input-container button {
     background-color: darkcyan;
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 12px 15px;
     cursor: pointer;
     font-size: 16px;
+    white-space: nowrap; /* Prevents text from wrapping */
+    width: auto; /* Adjusts to content */
 }
 
-.input-container button:hover {
-    background-color: none;
+/* Ensure proper scaling on smaller screens */
+@media (max-width: 480px) {
+    .input-container {
+        width: 100%; /* Full width on small screens */
+    }
+
+    .input-container button {
+        padding: 12px; /* Smaller padding for better fit */
+        font-size: 14px;
+    }
 }
 
 
