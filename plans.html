@@ -287,7 +287,39 @@ nav ul li a:hover {
 
 .discount { color: green; font-weight: bold; }
 .discounted-price { color: red; text-decoration: line-through; }
-input { padding: 5px; margin: 10px; width: 80%; }
+.discount { color: green; font-weight: bold; }
+.discounted-price { color: red; text-decoration: line-through; }
+.input-container {
+    display: flex;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 90%;
+    max-width: 300px;
+    margin: auto;
+}
+
+.input-container input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+.input-container button {
+    background-color: darkcyan;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.input-container button:hover {
+    background-color: darkgreen;
+}
 
 
     </style>
