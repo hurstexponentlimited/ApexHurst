@@ -1092,8 +1092,63 @@ span {
    
 </div>
 
+<style>
+    /* Notification Box */
+    .discount-message {
+        display: none;
+        padding: 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        text-align: center;
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+        width: 90%;
+        max-width: 400px;
+        opacity: 0;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    
+    /* Success Message */
+    .success {
+        background: #28a745;
+        color: white;
+        animation: fadeIn 0.5s ease-in-out, slideDown 0.5s ease-in-out;
+    }
+    
+    /* Error Message */
+    .error {
+        background: #dc3545;
+        color: white;
+        animation: fadeIn 0.5s ease-in-out, shake 0.3s ease-in-out;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    @keyframes slideDown {
+        from { transform: translateX(-50%) translateY(-20px); }
+        to { transform: translateX(-50%) translateY(0); }
+    }
+    
+    /* Shake Effect for Invalid Codes */
+    @keyframes shake {
+        0% { transform: translateX(-50%) translateY(0); }
+        25% { transform: translateX(-48%) translateY(0); }
+        50% { transform: translateX(-52%) translateY(0); }
+        75% { transform: translateX(-48%) translateY(0); }
+        100% { transform: translateX(-50%) translateY(0); }
+    }
+    </style>
 
-    <script src="plans.js"></script>
+<p id="discountMessage" class="discount-message"></p>
+
+<script src="plans.js"></script>
 
 <!-- Include Font Awesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -1126,7 +1181,7 @@ span {
             <div class="footer-column">
                  <h3>Contact</h3>
                 <p>GFX Forex Company Limited<br />
-                   22 White Sand Street, Lekki Lagos, Nigeria.<br />
+                   22 White Sand Street, Lekki Lagos, Nigeria<br />
                    <a href="tel:+2347062377546">📞 +2347 0623 77546</a>
                 </p>
             </div>
