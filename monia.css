@@ -326,16 +326,6 @@ display: none; /* Hide hamburger on larger screens */
 }
 
 }
-
-/* Social Icons */
-.social-icons a {
-    font-size: 20px;
-    margin-right: 20px;
-    color: lightgreen;
-    text-decoration: none;
-    display: inline-block; /* Needed for animation */
-    animation: initial-bounce-shake 3s ease-in-out infinite; /* Enhanced animation */
-  }
   
 
 /* Beautiful Footer Styles */
