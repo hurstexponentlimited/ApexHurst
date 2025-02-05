@@ -262,6 +262,10 @@ nav ul li a:hover {
         display: none; /* Hide nav on mobile */
     }
 
+    hr {
+    display: none;
+}
+
     .hamburger {
         display: block; /* Show hamburger on mobile */
     }
@@ -287,8 +291,6 @@ nav ul li a:hover {
 
 .discount { color: green; font-weight: bold; }
 .discounted-price { color: red; text-decoration: line-through; }
-.discount { color: green; font-weight: bold; }
-.discounted-price { color: red; text-decoration: line-through; }
 .input-container {
     display: flex;
     align-items: center;
@@ -303,24 +305,34 @@ nav ul li a:hover {
 .input-container input {
     flex: 1;
     border: none;
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
     outline: none;
+    min-width: 0; /* Prevents input from forcing button out */
 }
 
 .input-container button {
     background-color: darkcyan;
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 12px 15px;
     cursor: pointer;
     font-size: 16px;
+    white-space: nowrap; /* Prevents text from wrapping */
+    width: auto; /* Adjusts to content */
 }
 
-.input-container button:hover {
-    background-color: darkgreen;
-}
+/* Ensure proper scaling on smaller screens */
+@media (max-width: 480px) {
+    .input-container {
+        width: 100%; /* Full width on small screens */
+    }
 
+    .input-container button {
+        padding: 12px; /* Smaller padding for better fit */
+        font-size: 14px;
+    }
+}
 
     </style>
 </head>
@@ -358,10 +370,10 @@ nav ul li a:hover {
 <div class="container">
     <h2>Choose Your Plan</h2>
     <hr>
-    
-    
-    
-
+      <div class="input-container">
+        <input type="text" id="discountCode" placeholder="Enter Discount Code">
+        <button onclick="applyDiscount()">Apply</button>
+    </div>
     <section class="plan-section">
         <!-- 1-Month Plan (No Discount) -->
         <div class="plan">
@@ -392,11 +404,6 @@ nav ul li a:hover {
         </div>
     </section>
     <hr>
-
-    <div class="input-container">
-        <input type="text" id="discountCode" placeholder="Enter Discount Code">
-        <button onclick="applyDiscount()">Apply</button>
-    </div>
 </div>
 
     <script src="plans.js"></script>
