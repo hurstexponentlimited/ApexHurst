@@ -55,7 +55,7 @@ const urlParams = new URLSearchParams(window.location.search);
 
     function payWithPaystack(amount, email, name, phone) {
         var handler = PaystackPop.setup({
-            key: 'pk_live_fff80083ff520854d86339cfccbaa47fa97e68c0', // Replace with your public key
+            key: 'pk_test_7c8e764ec8ab7b8b7d4b59c113550206716a16b4', // Replace with your public key
             email: email, // User's email address
             amount: amount * 100, // Amount in kobo (multiply by 100)
             currency: "NGN",
